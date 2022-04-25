@@ -4,8 +4,8 @@ const BookstoreService = {
     fetchBooks: () => {
         return axios.get("/books");
     },
-    fetchAuthors: () => {
-        return axios.get("/authors");
+    fetchCategories: () => {
+        return axios.get("/categories");
     },
     deleteBook: (id) => {
         return axios.delete(`/books/delete/${id}`);

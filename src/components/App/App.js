@@ -5,6 +5,7 @@ import Books from '../Books/BookList/books';
 import BookAdd from "../Books/BookAdd/bookAdd";
 import BookEdit from "../Books/BookEdit/bookEdit";
 import BookTerm from "../Books/BookTerm/bookTerm";
+import Category from "../Categories/category";
 import Login from "../Login/login";
 import Header from '../Header/header';
 import BookstoreService from "../../repository/bookstoreRepository";
@@ -15,7 +16,7 @@ class App extends Component {
         super(props);
         this.state ={
             books: [],
-            authors: [],
+            categories: [],
             selectedBook: {}
         }
     }
@@ -31,7 +32,8 @@ class App extends Component {
                                 <Books books={this.state.books}
                                        onDelete={this.deleteBook}
                                        onEdit={this.editBook}/>}/>
-
+                            <Route path={"/categories"} exact render={() =>
+                                <Category categories={this.state.categories}/>}/>
                             <Route path={"/books/add"} exact render={() =>
                                 <BookAdd onAddProduct={this.addBook}/>}/>
                             <Route path={"/books/edit/:id"} exact render={() =>
@@ -51,7 +53,7 @@ class App extends Component {
 
     fetchData = () => {
         this.loadBooks();
-        this.loadAuthors();
+        this.loadCategories();
     }
 
     loadBooks = () => {
@@ -63,11 +65,11 @@ class App extends Component {
             })
     }
 
-    loadAuthors = () => {
-        BookstoreService.fetchAuthors()
-            .then((author) => {
+    loadCategories = () => {
+        BookstoreService.fetchCategories()
+            .then((category) => {
                 this.setState({
-                    authors: author.data
+                    category: category.data
                 })
             })
     }

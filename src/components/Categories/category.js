@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const authors = (props) => {
+const categories = (props) => {
     return (
         <div className={"container mm-4 mt-5"}>
             <div className={"row"}>
@@ -9,17 +9,13 @@ const authors = (props) => {
                         <thead>
                         <tr>
                             <th scope={"col"}>Name</th>
-                            <th scope={"col"}>Surname</th>
-                            <th scope={"col"}>Country</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {props.authors.map((term) => {
+                        {props.categories.map((term) => {
                             return (
                                 <tr>
                                     <td>{term.name}</td>
-                                    <td>{term.surname}</td>
-                                    <td>{term.country}</td>
                                 </tr>
                             );
                         })}
@@ -28,7 +24,7 @@ const authors = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default authors;
+export default categories;
